@@ -1,0 +1,16 @@
+{
+  "name": "deep-cuts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Media ingestion pipeline — scrapes YouTube/podcast content, transcribes, LLM-analyzes, and generates searchable knowledge with infographic output.",
+  "scripts": {
+    "dev:worker": "cd worker && npx tsx watch src/index.ts",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:worker\" \"npm run dev:frontend\"",
+    "db:migrate": "cd worker && npx tsx src/lib/migrate.ts",
+    "db:seed": "cd worker && npx tsx scripts/seed.ts",
+    "build": "cd frontend && npm run build",
+    "ingest": "cd worker && npx tsx src/cli.ts ingest",
+    "process": "cd worker && npx tsx src/cli.ts process"
+  }
+}
