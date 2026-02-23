@@ -24,5 +24,5 @@ export default function ThreadsPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

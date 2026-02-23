@@ -10,9 +10,7 @@ export default function Home() {
             className="w-full px-4 py-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition"
           />
         </div>
-        <p className="text-xs text-[var(--text-secondary)] mt-2 text-center">
-          Semantic search powered by pgvector
-        </p>
+        <p className="text-xs text-[var(--text-secondary)] mt-2 text-center">Semantic search powered by pgvector</p>
       </div>
 
       {/* Stats placeholder */}
@@ -42,5 +40,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
+  )
 }

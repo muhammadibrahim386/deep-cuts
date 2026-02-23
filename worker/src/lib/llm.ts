@@ -1,13 +1,13 @@
-import Anthropic from '@anthropic-ai/sdk';
-import dotenv from 'dotenv';
-import { ExtractResultSchema, ConnectResultSchema } from '../types/schema.js';
-import type { ExtractResult, ConnectResult } from '../types/schema.js';
+import Anthropic from '@anthropic-ai/sdk'
+import dotenv from 'dotenv'
+import type { ConnectResult, ExtractResult } from '../types/schema.js'
+import { ConnectResultSchema, ExtractResultSchema } from '../types/schema.js'
 
-dotenv.config({ path: new URL('../../.env', import.meta.url).pathname });
+dotenv.config({ path: new URL('../../.env', import.meta.url).pathname })
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
-});
+})
 
 const EXTRACT_SYSTEM = `You are a media analysis engine. Given a transcript and metadata for a video or podcast episode, produce a structured JSON analysis.
 
@@ -30,7 +30,7 @@ Your output MUST be valid JSON matching this exact schema:
 
 Categories must come from: Technology, Philosophy, Science, Culture, Politics, Economics, Psychology, Art & Design, Music, Health, History, Education, Spirituality, Environment, Media & Communication.
 
-Return ONLY the JSON object, no markdown fences, no commentary.`;
+Return ONLY the JSON object, no markdown fences, no commentary.`
 
 const CONNECT_SYSTEM = `You are a knowledge graph builder. Given summaries and keywords from multiple episodes, identify thought threads (recurring themes that evolve across episodes), bridges (direct connections between specific episodes), and emerging themes.
 
@@ -51,45 +51,41 @@ Your output MUST be valid JSON matching this schema:
   "emerging_themes": ["themes appearing but not yet fully formed"]
 }
 
-Return ONLY the JSON object, no markdown fences, no commentary.`;
+Return ONLY the JSON object, no markdown fences, no commentary.`
 
-export async function extract(
-  title: string,
-  description: string | null,
-  transcript: string
-): Promise<ExtractResult> {
+export async function extract(title: string, description: string | null, transcript: string): Promise<ExtractResult> {
   const userPrompt = `Episode: "${title}"
 ${description ? `Description: ${description}\n` : ''}
 Transcript:
-${transcript}`;
+${transcript}`
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6-20250514',
     max_tokens: 4096,
     system: EXTRACT_SYSTEM,
     messages: [{ role: 'user', content: userPrompt }],
-  });
+  })
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '';
-  const parsed = JSON.parse(text);
-  return ExtractResultSchema.parse(parsed);
+  const text = response.content[0].type === 'text' ? response.content[0].text : ''
+  const parsed = JSON.parse(text)
+  return ExtractResultSchema.parse(parsed)
 }
 
 export async function connect(
-  episodes: Array<{ id: string; title: string; tldr: string; keywords: string[] }>
+  episodes: Array<{ id: string; title: string; tldr: string; keywords: string[] }>,
 ): Promise<ConnectResult> {
   const userPrompt = `Analyze these episodes for thought threads and connections:
 
-${episodes.map((ep) => `- [${ep.id}] "${ep.title}"\n  TLDR: ${ep.tldr}\n  Keywords: ${ep.keywords.join(', ')}`).join('\n\n')}`;
+${episodes.map((ep) => `- [${ep.id}] "${ep.title}"\n  TLDR: ${ep.tldr}\n  Keywords: ${ep.keywords.join(', ')}`).join('\n\n')}`
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6-20250514',
     max_tokens: 4096,
     system: CONNECT_SYSTEM,
     messages: [{ role: 'user', content: userPrompt }],
-  });
+  })
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '';
-  const parsed = JSON.parse(text);
-  return ConnectResultSchema.parse(parsed);
+  const text = response.content[0].type === 'text' ? response.content[0].text : ''
+  const parsed = JSON.parse(text)
+  return ConnectResultSchema.parse(parsed)
 }
