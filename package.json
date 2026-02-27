@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run dev:worker\" \"npm run dev:frontend\"",
     "db:migrate": "cd worker && npx tsx src/lib/migrate.ts",
     "db:seed": "cd worker && npx tsx scripts/seed.ts",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "ingest": "cd worker && npx tsx src/cli.ts ingest",
     "process": "cd worker && npx tsx src/cli.ts process"
   }
