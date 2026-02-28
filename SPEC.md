@@ -88,10 +88,9 @@ Ingests YouTube shows and podcasts, transcribes them, runs LLM analysis to produ
 
 ## Deployment Target
 
-- **Server:** OpenClaw EC2 (m7i-flex.large, 2 vCPU, 8 GB RAM)
+- **Server:** Cloud VPS (2 vCPU, 8 GB RAM)
 - **Containers:** PostgreSQL+pgvector (1 container), Worker (1 container)
-- **Frontend:** Static export → Netlify (or served from EC2 via Caddy)
-- **Agent:** Egger manages the worker process, monitors queue, reports status
+- **Frontend:** Static export, served via CDN or reverse proxy
 
 ## Cost Estimates
 
@@ -103,7 +102,7 @@ Ingests YouTube shows and podcasts, transcribes them, runs LLM analysis to produ
 | Sonnet 4.6 (extract) | ~$0.09/ep | ~20k input + 2k output tokens per episode |
 | Sonnet 4.6 (connect) | ~$0.15/batch | Cross-episode analysis, run weekly |
 | Embeddings | ~$0.002/ep | text-embedding-3-small, cheap |
-| EC2 | Already running | Shared with OpenClaw/Egger |
+| VPS | Already running | Shared hosting |
 | **Total per episode** | **~$0.10-0.45** | Depends on caption availability |
 | **Monthly (20 ep/wk)** | **~$8-36** | |
 
@@ -426,7 +425,7 @@ YOUTUBE_API_KEY=AIza...         # YouTube Data API v3 (optional, for metadata en
 
 # Worker
 POLL_INTERVAL_MS=30000          # How often worker checks for jobs
-MAX_CONCURRENT_JOBS=1           # Sequential on EC2, can increase locally
+MAX_CONCURRENT_JOBS=1           # Sequential on server, can increase locally
 WHISPER_FALLBACK=true           # Use Whisper API when captions unavailable
 
 # Frontend

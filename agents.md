@@ -85,7 +85,7 @@ YouTube/Podcast URL
 
 | Decision | Rationale |
 |---|---|
-| YouTube captions first, Whisper API fallback | EC2 has no GPU — local Whisper would take 10-20x real-time |
+| YouTube captions first, Whisper API fallback | Server has no GPU, so local Whisper would take 10-20x real-time |
 | SQLite job queue, not BullMQ+Redis | Processing 5-20 jobs/week, not 50k/sec. One less container. |
 | PostgreSQL + pgvector only, no Neo4j | Neo4j advantages only materialize at >100k nodes. JSONB + join tables handle thought-threading fine. |
 | Two-pass LLM (extract → connect) | Better schema enforcement per pass. Extract is per-episode, connect is cross-episode batch. |
