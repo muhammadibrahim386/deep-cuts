@@ -2,6 +2,12 @@
 
 AI-powered media intelligence pipeline. Ingests YouTube shows and podcasts, transcribes them, runs two-pass LLM analysis, and surfaces cross-episode connections through semantic search and auto-generated infographic cards.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)](https://typescriptlang.org)
+[![pgvector](https://img.shields.io/badge/pgvector-semantic_search-336791)](https://github.com/pgvector/pgvector)
+[![Claude](https://img.shields.io/badge/Claude-Sonnet-cc785c)](https://anthropic.com)
+
 ![deep-cuts](https://assets.travisbreaks.com/github/deep-cuts.png)
 
 ## Tech Stack
